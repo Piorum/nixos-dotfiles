@@ -1,19 +1,4 @@
 { config, pkgs, lib, ...}:
-
-	let
-		# Assuming myTarball is defined as above or fetched
-		myTarball = ./.oh-my-zsh.tar.gz;
-		extractDir = "${config.home.homeDirectory}/.oh-my-zsh";
-	in
-	{
-		home.activation = {
-			extractMyTarball = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-				mkdir -p ${extractDir}
-				${pkgs.gnutar}/bin/tar -xzf ${myTarball} -C ${extractDir}
-			'';
-		};
-	}
-
 {
 	home.username = "username";
 	home.homeDirectory = "/home/username";
