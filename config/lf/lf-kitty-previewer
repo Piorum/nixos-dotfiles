@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+exec 200>/tmp/lf-kitty-lock
+flock 200 || exit 1
+
+#Wait a moment to prevent kitty from being overwhelmed and crashing
+sleep 0.01
+
+set -euo pipefail
+IFS=$'\n\t'
+
+MAX_PREVIEW_DIMENSION="1024x1024>"
+
+THUMBNAIL_FPATH="$LF_KITTY_TEMPDIR/thumbnail.png"
+mime=$(file --mime-type -Lb "$1")
+
+trap cleanup INT HUP EXIT
+
+case "$mime" in
+image/png|image/jpeg|image/bmp|image/svg+xml|image/webp)
+    gm convert "$1" -resize "$MAX_PREVIEW_DIMENSION" "$THUMBNAIL_FPATH" 2>/dev/null || exit 0
+    kitty.sh show "$THUMBNAIL_FPATH" "$LF_KITTY_IMAGE_ID" 1 "$4" "$5" "$2" "$3"
+    ;;
+image/gif)
+    gm convert "${1}[0]" -resize "$MAX_PREVIEW_DIMENSION" "$THUMBNAIL_FPATH" 2>/dev/null || exit 0
+    kitty.sh show "$THUMBNAIL_FPATH" "$LF_KITTY_IMAGE_ID" 1 "$4" "$5" "$2" "$3"
+    ;;
+application/pdf)
+    gs -o "$THUMBNAIL_FPATH" -sDEVICE=pngalpha -dLastPage=1 "$1" >/dev/null 2>&1 || exit 0
+    kitty.sh show "$THUMBNAIL_FPATH" "$LF_KITTY_IMAGE_ID" 1 "$4" "$5" "$2" "$3"
+    ;;
+video/*)
+    ffmpegthumbnailer -i "$1" -o "$THUMBNAIL_FPATH" -s 1024 >/dev/null 2>&1 || exit 0
+    kitty.sh show "$THUMBNAIL_FPATH" "$LF_KITTY_IMAGE_ID" 1 "$4" "$5" "$2" "$3"
+    ;;
+text/*|application/json)
+    head -n 100 "$1"
+    ;;
+*)
+    echo "No preview available for $(which head)"
+    ;;
+esac
+
+exit 0

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+exec 200>/tmp/lf-kitty-lock
+flock 200 || exit 1
+
+#Wait a moment to prevent kitty from being overwhelmed and crashing
+sleep 0.01
+
+kitty.sh delete_img $LF_KITTY_IMAGE_ID 0

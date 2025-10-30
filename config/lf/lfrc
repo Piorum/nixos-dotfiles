@@ -1,0 +1,9 @@
+set previewer ~/.config/lf/lf-kitty-previewer
+set cleaner ~/.config/lf/lf-kitty-cleaner
+
+set icons true
+
+map <enter> open
+
+cmd unzip $unzip $f
+cmd code &code -r .

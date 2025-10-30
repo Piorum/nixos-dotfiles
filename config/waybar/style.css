@@ -1,0 +1,35 @@
+* {
+  font-size: 21px;
+  font-family: "JetBrainsMono Nerd Font", "Symbols Nerd Font Mono";
+  padding-top: 3px;
+  padding-bottom: 2px;
+}
+
+window#waybar {
+  background-color: rgba(0,0,0,1);
+}
+
+#custom-logo {
+  color: #ffffff;
+  padding-left: 15px;
+  padding-right: 7.5px;
+  transition: color 0.3s;
+  font-size: 24px;
+}
+#clock {
+  color: #ffffff;
+  padding-left: 15px;
+}
+#workspaces * {
+  color: #ffffff;
+}
+#pulseaudio {
+  padding-top: 5px;
+  padding-right: 7.5px;
+  color: #ffffff;
+}
+#network {
+  padding-left: 15px;
+  padding-right: 15px;
+  color: #ffffff;
+}
