@@ -27,7 +27,12 @@
 	home.file.".config/nvtop".source = ./config/nvtop;
 	home.file.".config/tofi".source = ./config/tofi;
 	home.file.".config/waybar".source = ./config/waybar;
+
 	home.file.".local/share/applications/org.chromium.Chromium.desktop".source = ./desktop/org.chromium.Chromium.desktop;
+
+	home.file.".scripts".source = ./scripts;
+	home.file.".zshrc".source = ./zshrc;
+	home.file.".p10k.zsh".source = ./p10k.zsh;
 
 	home.activation.copyZenTheme = ''
 		dir=$(find "$HOME/.var/app/app.zen_browser.zen/.zen" -maxdepth 1 -type d -name '*.Default*' | head -n1)

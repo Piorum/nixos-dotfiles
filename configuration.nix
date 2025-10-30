@@ -55,10 +55,18 @@
     enable = true;
     xwayland.enable = true;
   };
+  
+  programs.zsh = {
+    enable = true;
+    oh-my-zsh = {
+      enable = true;
+    };
+  };
 
   users.users.username = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
+    shell = pkgs.zsh;
     packages = with pkgs; [
       tree
     ];
@@ -75,7 +83,7 @@
     tofi
     htop
     nvtopPackages.full
-    fastfetch
+    pfetch
     openrgb
     graphicsmagick
     ffmpegthumbnailer
@@ -86,6 +94,14 @@
     nwg-look
     orchis-theme
     kora-icon-theme
+    lmstudio
+    grim
+    slurp
+    swappy
+    killall
+    libnotify
+    glib
+    hyprpicker
   ];
 
   fonts.packages = with pkgs; [
