@@ -55,6 +55,7 @@
     enable = true;
     xwayland.enable = true;
   };
+  programs.zsh.enable = true;
   
   users.users.username = {
     isNormalUser = true;
