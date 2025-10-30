@@ -56,13 +56,6 @@
     xwayland.enable = true;
   };
   
-  programs.zsh = {
-    enable = true;
-    oh-my-zsh = {
-      enable = true;
-    };
-  };
-
   users.users.username = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
@@ -73,6 +66,8 @@
   };
 
   environment.systemPackages = with pkgs; [
+    zsh
+    nitch
     vim 
     wget
     waybar
@@ -83,7 +78,6 @@
     tofi
     htop
     nvtopPackages.full
-    pfetch
     openrgb
     graphicsmagick
     ffmpegthumbnailer

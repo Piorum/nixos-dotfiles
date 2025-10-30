@@ -31,6 +31,7 @@
 	home.file.".local/share/applications/org.chromium.Chromium.desktop".source = ./desktop/org.chromium.Chromium.desktop;
 
 	home.file.".scripts".source = ./scripts;
+	home.file.".oh-my-zsh".source = ./oh-my-zsh;
 	home.file.".zshrc".source = ./zshrc;
 	home.file.".p10k.zsh".source = ./p10k.zsh;
 
