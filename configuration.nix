@@ -64,11 +64,15 @@
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
   };
 
-
+  virtualisation.docker = {
+    enable = true;
+    daemon.settings.features.cdi = true;
+  };
+  hardware.nvidia-container-toolkit.enable = true;
   
   users.users.username = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "docker" ];
     shell = pkgs.zsh;
     packages = with pkgs; [
       tree
