@@ -1,1 +1,0 @@
-kill -SIGUSR1 $(pgrep waybar)
