@@ -6,7 +6,7 @@ wait_for_exit() {
     done
 }
 
-killall waybar
+kill -15 $(pgrep waybar)
 
 wait_for_exit
 
