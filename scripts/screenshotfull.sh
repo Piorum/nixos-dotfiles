@@ -14,7 +14,7 @@ trap cleanup EXIT
 
 # Hide cursor briefly
 hyprctl keyword cursor:invisible true
-sleep 0.05
+sleep 0.1
 
 # Cursor position
 read -r cx cy <<< "$(hyprctl cursorpos | tr -d ',')"
