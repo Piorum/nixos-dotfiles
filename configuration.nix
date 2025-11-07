@@ -80,6 +80,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    mpv
     lutris
     protonup-qt
     zsh
