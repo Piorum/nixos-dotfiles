@@ -80,6 +80,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    dotnetCorePackages.sdk_9_0-bin
     mpv
     lutris
     protonup-qt
