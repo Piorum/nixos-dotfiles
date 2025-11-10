@@ -5,14 +5,13 @@
 	home.stateVersion = "25.05";
 	programs.kitty.enable = true;
 	programs.lf.enable = true;
-	programs.bash = {
-		enable = true;
-		profileExtra = ''
-			if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
-				exec Hyprland
-			fi
-		'';
+	programs.bash.enable = true;
+
+	home.sessionVariables = {
+		DOTNET_ROOT = pkgs.dotnet-sdk_9;
+		PATH = "${pkgs.dotnet-sdk_9}/bin:$PATH";
 	};
+
 	home.file.".config/fastfetch".source = ./config/fastfetch;
 	home.file.".config/gtk-3.0".source = ./config/gtk-3.0;
 	home.file.".config/htop".source = ./config/htop;
@@ -27,6 +26,7 @@
 	home.file.".local/share/applications/org.chromium.Chromium.desktop".source = ./desktop/org.chromium.Chromium.desktop;
 
 	home.file.".scripts".source = ./scripts;
+	home.file.".zprofile".source = ./zprofile;
 	home.file.".zshrc".source = ./zshrc;
 	home.file.".p10k.zsh".source = ./p10k.zsh;
 

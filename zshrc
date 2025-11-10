@@ -3,14 +3,19 @@
 # confirmations, etc.) must go above this block; everything else may go below.
 
 # CUDA Toolkit
-export PATH=/opt/cuda/bin:$PATH
-export LD_LIBRARY_PATH=/opt/cuda/lib64:$LD_LIBRARY_PATH
+#export PATH=/opt/cuda/bin:$PATH
+#export LD_LIBRARY_PATH=/opt/cuda/lib64:$LD_LIBRARY_PATH
 
 # Dotnet
-export PATH=$HOME/.dotnet/tools:$PATH
+#export PATH=$HOME/.dotnet/tools:$PATH
 
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# Source home manager environment variables
+if [ -f ~/.profile ]; then
+  source ~/.profile
 fi
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
@@ -126,30 +131,30 @@ export PATH="$HOME/.scripts:$PATH"
 
       
 # --- Lazy-load NVM (Corrected and Simplified) ---
-export NVM_DIR="$HOME/.nvm"
+#export NVM_DIR="$HOME/.nvm"
 
 # This function will be called the first time you run a Node/NVM command.
 # It sources the real nvm.sh and then executes the command you originally wanted.
-load_nvm() {
+#load_nvm() {
   # Un-alias the commands to prevent a recursive loop
-  unalias nvm node npm npx 2>/dev/null
+  #unalias nvm node npm npx 2>/dev/null
 
   # Source the nvm script
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  #[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
   # Source the bash completion script
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+  #[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
   # Now that NVM is loaded, run the original command
-  "$@"
-}
+  #"$@"
+#}
 
 # Create aliases for common commands to trigger the `load_nvm` function.
 # The function will then run the command for you.
-alias nvm='load_nvm nvm'
-alias node='load_nvm node'
-alias npm='load_nvm npm'
-alias npx='load_nvm npx'
+#alias nvm='load_nvm nvm'
+#alias node='load_nvm node'
+#alias npm='load_nvm npm'
+#alias npx='load_nvm npx'
 # Add any other global node commands you use frequently
 # alias yarn='load_nvm yarn'
 # alias pnpm='load_nvm pnpm'

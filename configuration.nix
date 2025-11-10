@@ -80,7 +80,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    dotnetCorePackages.sdk_9_0-bin
+    dotnet-sdk_9
     mpv
     lutris
     protonup-qt
@@ -116,6 +116,10 @@
     glib
     hyprpicker
   ];
+
+  environment.variables = {
+    DOTNET_ROOT = "${pkgs.dotnet-sdk_9}";
+  };
 
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
