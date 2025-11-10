@@ -91,7 +91,7 @@
     waybar
     git
     hyprpaper
-    vscodium
+    vscode.fhs
     mako
     tofi
     htop
