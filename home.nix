@@ -7,11 +7,6 @@
 	programs.lf.enable = true;
 	programs.bash.enable = true;
 
-	home.sessionVariables = {
-		DOTNET_ROOT = pkgs.dotnet-sdk_9;
-		PATH = "${pkgs.dotnet-sdk_9}/bin:$PATH";
-	};
-
 	home.file.".config/fastfetch".source = ./config/fastfetch;
 	home.file.".config/gtk-3.0".source = ./config/gtk-3.0;
 	home.file.".config/htop".source = ./config/htop;

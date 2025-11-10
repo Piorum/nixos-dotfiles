@@ -117,10 +117,6 @@
     hyprpicker
   ];
 
-  environment.variables = {
-    DOTNET_ROOT = "${pkgs.dotnet-sdk_9}";
-  };
-
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
     nerd-fonts.symbols-only
