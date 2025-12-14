@@ -2,7 +2,7 @@
 {
 	home.username = "username";
 	home.homeDirectory = "/home/username";
-	home.stateVersion = "25.05";
+	home.stateVersion = "26.05";
 	programs.kitty.enable = true;
 	programs.lf.enable = true;
 	programs.bash.enable = true;

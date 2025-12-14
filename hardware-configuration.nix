@@ -29,11 +29,6 @@
       fsType = "ext4";
     };
 
-  fileSystems."/mnt/Samsung980" =
-    { device = "/dev/disk/by-uuid/b8be3ff5-beb9-407a-b024-2e05e58508c7";
-      fsType = "ext4";
-    };
-
   swapDevices =
     [ { device = "/dev/disk/by-uuid/2e107e27-5e15-4754-b742-a784dc00868e"; }
     ];
