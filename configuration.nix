@@ -92,6 +92,7 @@
     git
     hyprpaper
     vscode.fhs
+    antigravity
     mako
     tofi
     htop
