@@ -83,7 +83,6 @@
     dotnet-sdk_10
     mpv
     lutris
-    protonup-qt
     zsh
     nitch
     vim 
