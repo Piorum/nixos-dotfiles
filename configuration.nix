@@ -9,7 +9,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages;
 
   networking.hostName = "starfall";
   networking.networkmanager.enable = true;
@@ -80,6 +80,8 @@
   };
 
   environment.systemPackages = with pkgs; [
+    clang
+    zlib
     dotnet-sdk_10
     mpv
     lutris

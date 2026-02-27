@@ -18,6 +18,7 @@
 	home.file.".config/tofi".source = ./config/tofi;
 	home.file.".config/waybar".source = ./config/waybar;
 
+	home.file.".local/share/applications/lm-studio.desktop".source = ./desktop/lm-studio.desktop;
 	home.file.".local/share/applications/org.chromium.Chromium.desktop".source = ./desktop/org.chromium.Chromium.desktop;
 
 	home.file.".scripts".source = ./scripts;
