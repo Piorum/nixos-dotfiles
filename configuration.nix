@@ -93,7 +93,6 @@
     git
     hyprpaper
     vscode.fhs
-    antigravity
     mako
     tofi
     htop
@@ -123,6 +122,7 @@
     nerd-fonts.jetbrains-mono
     nerd-fonts.symbols-only
     nerd-fonts.noto
+    noto-fonts-cjk-sans
   ];
   fonts.fontDir.enable = true;
 
