@@ -3,8 +3,9 @@
 	home.username = "username";
 	home.homeDirectory = "/home/username";
 	home.stateVersion = "26.05";
-	programs.kitty.enable = true;
-	programs.lf.enable = true;
+	home.packages = with pkgs;[
+		kitty
+	];
 	programs.bash.enable = true;
 
 	home.file.".config/fastfetch".source = ./config/fastfetch;
@@ -12,7 +13,6 @@
 	home.file.".config/htop".source = ./config/htop;
 	home.file.".config/hypr".source = ./config/hypr;
 	home.file.".config/kitty".source = ./config/kitty;
-	home.file.".config/lf".source = ./config/lf;
 	home.file.".config/mako".source = ./config/mako;
 	home.file.".config/nvtop".source = ./config/nvtop;
 	home.file.".config/tofi".source = ./config/tofi;
