@@ -6,35 +6,33 @@
       ./hardware-configuration.nix
     ];
 
+  #Boot
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  #Networking
   networking.hostName = "starfall";
   networking.networkmanager.enable = true;
 
+  #Time
   time.timeZone = "America/Denver";
 
+  #Security
   security.sudo.wheelNeedsPassword = false;
+  services.getty.autologinUser = "username";
 
+  #Misc
   nixpkgs.config.allowUnfree = true;
+  services.hardware.openrgb.enable = true;
+
+  #Graphics
   hardware.graphics = {
     enable = true;
   };
 
   services.xserver.videoDrivers = ["nvidia"];
-
-  services.hardware.openrgb.enable = true;
-
-  services.flatpak.enable = true;
-  systemd.services.flatpak-repo = {
-    wantedBy = [ "multi-user.target" ];
-    path = [ pkgs.flatpak ];
-    script = ''
-      flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-    '';
-  };
 
   hardware.nvidia = {
 
@@ -48,9 +46,34 @@
     package = config.boot.kernelPackages.nvidiaPackages.latest;
 
   };
-	
-  services.getty.autologinUser = "username";
 
+  #Sandboxing
+  services.flatpak.enable = true;
+  systemd.services.flatpak-repo = {
+    wantedBy = [ "multi-user.target" ];
+    path = [ pkgs.flatpak ];
+    script = ''
+      flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    '';
+  };
+
+  virtualisation.docker = {
+    enable = true;
+    daemon.settings.features.cdi = true;
+  };
+  hardware.nvidia-container-toolkit.enable = true;
+  
+  #Users
+  users.users.username = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" "docker" ];
+    shell = pkgs.zsh;
+    packages = with pkgs; [
+      tree
+    ];
+  };
+
+  #User Programs
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
@@ -64,60 +87,55 @@
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
   };
 
-  virtualisation.docker = {
-    enable = true;
-    daemon.settings.features.cdi = true;
-  };
-  hardware.nvidia-container-toolkit.enable = true;
-  
-  users.users.username = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "docker" ];
-    shell = pkgs.zsh;
-    packages = with pkgs; [
-      tree
-    ];
-  };
-
   environment.systemPackages = with pkgs; [
-    clang
+    #Build tools
+    glib
     zlib
+    clang
     dotnet-sdk_10
-    mpv
-    lutris
+
+    #Terminal
     zsh
     nitch
-    vim 
-    wget
-    waybar
+
+    #Utilities
     git
-    hyprpaper
-    vscode.fhs
-    mako
-    tofi
+    mpv
     htop
-    nvtopPackages.full
+    killall
     openrgb
-    graphicsmagick
-    ffmpegthumbnailer
-    ghostscript
-    file
-    coreutils
-    bibata-cursors
-    nwg-look
-    orchis-theme
-    kora-icon-theme
     lmstudio
+    coreutils
+    libnotify
+    vscode.fhs
+    nvtopPackages.full
+    #Secondary Utilities
+    jq
+    file
     grim
+    wget
     slurp
     swappy
-    jq
-    killall
-    libnotify
-    glib
+    ghostscript
+    graphicsmagick
+    ffmpegthumbnailer
+
+    #Gaming
+    lutris
+
+    #Desktop Environment
+    mako
+    tofi
+    waybar
+    nwg-look
+    hyprpaper
     hyprpicker
+    orchis-theme
+    bibata-cursors
+    kora-icon-theme
   ];
 
+  #Fonts
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
     nerd-fonts.symbols-only

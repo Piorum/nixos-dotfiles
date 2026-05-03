@@ -16,6 +16,14 @@
 				./configuration.nix
 				home-manager.nixosModules.home-manager
 				{
+					#Temp remove when fixed
+					nixpkgs.overlays = [
+						(final: prev: {
+							openldap = prev.openldap.overrideAttrs (oldAttrs: {
+								doCheck = false;
+							});
+						})
+					];
 					home-manager = {
 						useGlobalPkgs = true;
 						useUserPackages = true;
