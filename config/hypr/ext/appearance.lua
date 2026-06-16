@@ -43,11 +43,3 @@ hl.config({
         enable_anr_dialog = false,
     },
 })
-
-hl.curve("basic", { type = "bezier", points = { {0.75,0}, {0.25,1} }})
-
-hl.animation({ leaf = "windows", enabled = true, speed = 0.2, bezier = "basic" })
-hl.animation({ leaf = "windowsOut", enabled = true, speed = 0.2, bezier = "basic" })
-hl.animation({ leaf = "border", enabled = true, speed = 1, bezier = "basic" })
-hl.animation({ leaf = "fade", enabled = true, speed = 7, bezier = "basic" })
-hl.animation({ leaf = "workspaces", enabled = true, speed = 0.2, bezier = "basic" })

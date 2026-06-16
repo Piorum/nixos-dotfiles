@@ -2,17 +2,18 @@
 
 local terminal = "kitty"
 local fileManager = "kitty -e /home/username/Documents/Sunfire/Sunfire/bin/Release/net10.0/linux-x64/publish/Sunfire.sh -U"
-local menu = "tofi-drun | xargs hyprctl dispatch exec --"
+local menu = "tofi-drun --drun-launch=true"
 local screenshot = "~/.scripts/screenshot.sh"
-local screenshotFull = "~/.scripts/screenshotfull.sh"
 local restartWaybar = "~/.scripts/restart_waybar.sh"
 local hideWaybar = "kill -10 $(pgrep waybar)"
+
+local screenshotScript = require("ext/scripts/screenshotfull")
 
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd(screenshot))
-hl.bind(mainMod .. " + SHIFT + Print", hl.dsp.exec_cmd(screenshotFull))
+hl.bind(mainMod .. " + SHIFT + Print", hl.dsp.exec_cmd(screenshotScript.full))
 hl.bind(mainMod .. " + SHIFT + CTRL + ALT + P", hl.dsp.exec_cmd(restartWaybar))
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(hideWaybar))
 
