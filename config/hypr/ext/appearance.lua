@@ -8,8 +8,8 @@ hl.config({
         border_size = 0,
 
         col = {
-            active_border = rgb(00FFFF),
-            inactive_border = rgb(1C1C1C),
+            active_border = "rgb(00FFFF)",
+            inactive_border = "rgb(1C1C1C)",
         },
 
         resize_on_border = false,
