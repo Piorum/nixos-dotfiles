@@ -13,7 +13,7 @@ hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd(screenshot))
-hl.bind(mainMod .. " + SHIFT + Print", hl.dsp.exec_cmd(screenshotScript.full))
+hl.bind(mainMod .. " + SHIFT + Print", screenshotScript.full)
 hl.bind(mainMod .. " + SHIFT + CTRL + ALT + P", hl.dsp.exec_cmd(restartWaybar))
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(hideWaybar))
 
