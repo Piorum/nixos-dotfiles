@@ -11,6 +11,7 @@ hl.config({
         follow_mouse = 1,
 
         sensitivity = 0,
+        accel_profile = "custom 1.5 0.0 3.0 12.0",
 
         touchpad = {
             natural_scroll = false,
@@ -20,9 +21,4 @@ hl.config({
     cursor = {
         no_hardware_cursors = true,
     },
-})
-
-hl.device({
-    name = "logitech-pro-x-1",
-    accel_profile = "custom 1.5 0.0 3.0 12.0",
 })

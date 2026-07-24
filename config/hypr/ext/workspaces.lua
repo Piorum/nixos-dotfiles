@@ -19,3 +19,7 @@ for i = 1, 10 do
     hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = r_ws }))
     hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = r_ws }))
 end
+
+hl.bind(mainMod .. " + CTRL + SHIFT + ALT + 1", hl.dsp.focus({ workspace = 1 }));
+hl.bind(mainMod .. " + CTRL + SHIFT + ALT + 2", hl.dsp.focus({ workspace = 11 }));
+hl.bind(mainMod .. " + CTRL + SHIFT + ALT + 3", hl.dsp.focus({ workspace = 21 }));
