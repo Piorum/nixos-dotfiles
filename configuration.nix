@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, options, ... }:
 
 {
   imports =
@@ -15,6 +15,7 @@
   #Networking
   networking.hostName = "starfall";
   networking.networkmanager.enable = true;
+  networking.timeServers = options.networking.timeServers.default ++ [ "time.nist.gov" ]; 
 
   #Time
   time.timeZone = "America/Denver";
@@ -122,6 +123,9 @@
 
     #Gaming
     lutris
+
+    #Web
+    chromium
 
     #Desktop Environment
     mako

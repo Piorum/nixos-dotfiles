@@ -20,7 +20,7 @@
 
 	home.file.".local/share/applications/lm-studio.desktop".source = ./desktop/lm-studio.desktop;
 	home.file.".local/share/applications/mnmlauncher.desktop".source = ./desktop/mnmlauncher.desktop;
-	home.file.".local/share/applications/org.chromium.Chromium.desktop".source = ./desktop/org.chromium.Chromium.desktop;
+	home.file.".local/share/applications/chromium-browser.desktop".source = ./desktop/chromium-browser.desktop;
 
 	home.file.".scripts".source = ./scripts;
 	home.file.".zprofile".source = ./zprofile;
