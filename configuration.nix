@@ -1,4 +1,4 @@
-{ config, lib, pkgs, options, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   imports =
@@ -15,9 +15,15 @@
   #Networking
   networking.hostName = "starfall";
   networking.networkmanager.enable = true;
-  networking.timeServers = options.networking.timeServers.default ++ [ "time.nist.gov" ]; 
 
   #Time
+  services.chrony = {
+    enable = true;
+    enableNTS = true;
+    servers = [
+      "time.cloudflare.com"
+    ];
+  };
   time.timeZone = "America/Denver";
 
   #Security
