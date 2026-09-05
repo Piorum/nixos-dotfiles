@@ -99,7 +99,7 @@
     glib
     zlib
     clang
-    dotnet-sdk_10
+    dotnet-sdk_11
 
     #Terminal
     zsh

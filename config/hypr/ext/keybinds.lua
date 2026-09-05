@@ -1,7 +1,7 @@
 -- keybinds
 
 local terminal = "kitty"
-local fileManager = "kitty -e /home/username/Documents/Sunfire/Sunfire/bin/Release/net10.0/linux-x64/publish/Sunfire.sh -U"
+local fileManager = "kitty -e /home/username/Documents/Sunfire/Sunfire/bin/Release/net11.0/linux-x64/publish/Sunfire.sh -U"
 local menu = "tofi-drun --drun-launch=true"
 local screenshot = "~/.scripts/screenshot.sh"
 local restartWaybar = "~/.scripts/restart_waybar.sh"
