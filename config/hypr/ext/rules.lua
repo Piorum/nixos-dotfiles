@@ -19,3 +19,19 @@ hl.window_rule({
 
     no_focus = true,
 })
+hl.window_rule({
+    name = "steam-immediate-game",
+    match = {
+        class = "^steam_app_[0-9]+$",
+    },
+    content = "game",
+    immediate = true,
+})
+hl.window_rule({
+    name = "osu!-immediate-game",
+    match = {
+        class = "^(osu!)$",
+    },
+    content = "game",
+    immediate = true,
+})

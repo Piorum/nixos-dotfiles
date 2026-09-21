@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
 
-wait_for_exit() {
+if pgrep -x "waybar" > /dev/null; then
+    pkill -15 -x "waybar"
+    
     while pgrep -x "waybar" > /dev/null; do
-        :
+        sleep 0.1
     done
-}
+fi
 
-kill -15 $(pgrep waybar)
-
-wait_for_exit
-
-waybar
+exec uwsm app -- waybar

@@ -17,6 +17,10 @@ hl.config({
         allow_tearing = true,
     },
 
+    render = {
+        direct_scanout = 2,
+    },
+
     decoration = {
         rounding = 0,
 
@@ -41,5 +45,6 @@ hl.config({
         force_default_wallpaper = 2,
         disable_hyprland_logo = false,
         enable_anr_dialog = false,
+        vrr = 3,
     },
 })

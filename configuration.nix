@@ -29,10 +29,20 @@
   #Security
   security.sudo.wheelNeedsPassword = false;
   services.getty.autologinUser = "username";
+  security.polkit.enable = true;
+  security.rtkit.enable = true;
 
   #Misc
   nixpkgs.config.allowUnfree = true;
   services.hardware.openrgb.enable = true;
+  services.udev.extraRules = ''
+    # Wooting
+    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="31e3", ATTRS{idProduct}=="1342", MODE="0660", GROUP="input", TAG+="uaccess"
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="31e3", MODE="0660", GROUP="input", TAG+="uaccess"
+    # Finalmouse
+    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="361d", ATTRS{idProduct}=="0100", MODE="0660", GROUP="input", TAG+="uaccess"
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="361d", MODE="0660", GROUP="input", TAG+="uaccess"
+  '';
 
   #Graphics
   hardware.graphics = {
@@ -54,6 +64,36 @@
 
   };
 
+  #Audio
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    jack.enable = true;
+
+    extraConfig.pipewire."99-low-latency" = {
+      "context.properties" = {
+        "default.clock.rate" = 48000;
+        "default.clock.allowed-rates" = [ 44100 48000 96000 192000 ];
+
+        "default.clock.quantum" = 64;
+        "default.clock.min-quantum" = 32;
+        "default.clock.max-quantum" = 128;
+      };
+    };
+
+    extraConfig.pipewire-pulse."99-low-latency" = {
+      "pulse.properties" = {
+        "pulse.min.req" = "32/48000";
+        "pulse.default.req" = "64/48000";
+        "pulse.max.req" = "128/48000";
+        "pulse.min.quantum" = "32/48000";
+        "pulse.max.quantum" = "128/48000";
+      };
+    };
+  };
+
   #Sandboxing
   services.flatpak.enable = true;
   systemd.services.flatpak-repo = {
@@ -73,7 +113,7 @@
   #Users
   users.users.username = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" ];
+    extraGroups = [ "wheel" "docker" "input" ];
     shell = pkgs.zsh;
     packages = with pkgs; [
       tree
@@ -83,6 +123,7 @@
   #User Programs
   programs.hyprland = {
     enable = true;
+    withUWSM = true;
     xwayland.enable = true;
   };
   programs.zsh.enable = true;
@@ -140,6 +181,7 @@
     nwg-look
     hyprpaper
     hyprpicker
+    hyprpolkitagent
     orchis-theme
     bibata-cursors
     kora-icon-theme
