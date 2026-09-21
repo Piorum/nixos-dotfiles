@@ -29,7 +29,11 @@
   #Security
   security.sudo.wheelNeedsPassword = false;
   services.getty.autologinUser = "username";
+
   security.polkit.enable = true;
+  systemd.packages = [ pkgs.hyprpolkitagent ];
+  systemd.user.targets.graphical-session.wants = [ "hyprpolkitagent.service" ];
+
   security.rtkit.enable = true;
 
   #Misc
