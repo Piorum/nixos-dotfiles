@@ -12,6 +12,57 @@
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  boot.kernelParams = [
+    "amd_pstate=active"
+    "processor.ignore_ppc=1"
+  ];
+  boot.kernelModules = [
+    "tcp_bbr"
+    "8021q"
+  ];
+  boot.kernel.sysctl = {
+    "net.core.default_qdisc" = "cake";
+    "net.ipv4.tcp_congestion_control" = "bbr";
+
+    "net.ipv4.tcp_notsent_lowat" = 16384;
+    "net.ipv4.tcp_slow_start_after_idle" = 0;
+    "net.ipv4.tcp_timestamps" = 1;
+
+    "net.core.busy_read" = 50;
+    "net.core.busy_poll" = 50;
+
+    "net.core.netdev_max_backlog" = 16384;
+    "net.core.somaxconn" = 8192;
+
+    "vm.max_map_count" = 2147483642;
+    "kernel.split_lock_mitigate" = 0;
+  };
+
+  #Optimizations
+  services.scx = {
+    enable = true;
+    scheduler = "scx_lavd";
+  };
+  programs.gamemode = {
+    enable = true;
+    enableRenice = true;
+    settings = {
+      general = {
+        renice = 10;
+      };
+      gpu = {
+        apply_gpu_optimisations = "accept-responsibility";
+        gpu_device = 0;
+        nv_powermode_level = "prefer-maximum-performance";
+      };
+      cpu = {
+        # CCD0
+        pin_cores = "0-7,16-23";
+        park_cores = "no";
+      };
+    };
+  };
+
   #Networking
   networking.hostName = "starfall";
   networking.networkmanager.enable = true;
@@ -51,6 +102,7 @@
   #Graphics
   hardware.graphics = {
     enable = true;
+    enable32Bit = true;
   };
 
   services.xserver.videoDrivers = ["nvidia"];
@@ -135,6 +187,9 @@
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+    extraPackages = with pkgs; [
+      gamemode
+    ];
   };
 
   environment.systemPackages = with pkgs; [
