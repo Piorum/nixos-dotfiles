@@ -1,5 +1,4 @@
-hl.on("hyprland.start", function()    
-    hl.exec_cmd("uwsm app -- hyprpolkitagent")
+hl.on("hyprland.start", function()
     hl.exec_cmd("uwsm app -- mako")
     hl.exec_cmd("uwsm app -- hyprpaper")
     hl.exec_cmd("uwsm app -- waybar")
