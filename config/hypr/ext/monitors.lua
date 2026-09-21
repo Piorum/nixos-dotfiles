@@ -24,9 +24,3 @@ hl.monitor({
     scale = 1,
     bitdepth = 10,
 })
-
--- Dummyplug
-hl.monitor({
-    output = "desc:Ugreen Group Ltd. UGREEN 0x20200210",
-    disabled = true,
-})

@@ -2,7 +2,7 @@
   "position": "bottom",
 
   "layer": "top",
-  "output": "DP-5",
+  "output": "DP-2",
   "modules-left": ["custom/logo", "clock"],
   "modules-right": ["pulseaudio", "network"],
 
