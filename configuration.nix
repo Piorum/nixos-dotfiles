@@ -15,6 +15,7 @@
   boot.kernelParams = [
     "amd_pstate=active"
     "processor.ignore_ppc=1"
+    "irqaffinity=8-15,24-31"
   ];
   boot.kernelModules = [
     "tcp_bbr"
