@@ -90,7 +90,16 @@
 
   #Misc
   nixpkgs.config.allowUnfree = true;
-  services.hardware.openrgb.enable = true;
+
+  systemd.tmpfiles.rules = [
+    "L+ /var/lib/OpenRGB/main.orp - - - - ${./main.orp}"
+  ];
+  services.hardware.openrgb = {
+    enable = true;
+    motherboard = "amd";
+    startupProfile = "main.orp";
+  };
+
   services.udev.extraRules = ''
     # Wooting
     KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="31e3", ATTRS{idProduct}=="1342", MODE="0660", GROUP="input", TAG+="uaccess"

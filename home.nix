@@ -18,7 +18,6 @@
 	home.file.".config/tofi".source = ./config/tofi;
 	home.file.".config/waybar".source = ./config/waybar;
 
-	home.file.".local/share/applications/lm-studio.desktop".source = ./desktop/lm-studio.desktop;
 	home.file.".local/share/applications/mnmlauncher.desktop".source = ./desktop/mnmlauncher.desktop;
 	home.file.".local/share/applications/chromium-browser.desktop".source = ./desktop/chromium-browser.desktop;
 
