@@ -104,6 +104,9 @@
     # Wooting
     KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="31e3", ATTRS{idProduct}=="1342", MODE="0660", GROUP="input", TAG+="uaccess"
     SUBSYSTEM=="usb", ATTRS{idVendor}=="31e3", MODE="0660", GROUP="input", TAG+="uaccess"
+    # MonsGeek
+    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="3151", ATTRS{idProduct}=="5029", MODE="0660", GROUP="input", TAG+="uaccess"
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="3151", MODE="0660", GROUP="input", TAG+="uaccess"
     # Finalmouse
     KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="361d", ATTRS{idProduct}=="0100", MODE="0660", GROUP="input", TAG+="uaccess"
     SUBSYSTEM=="usb", ATTRS{idVendor}=="361d", MODE="0660", GROUP="input", TAG+="uaccess"
@@ -212,6 +215,7 @@
     #Terminal
     zsh
     nitch
+    antigravity-cli
 
     #Utilities
     git
