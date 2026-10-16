@@ -215,7 +215,6 @@
     #Terminal
     zsh
     nitch
-    antigravity-cli
 
     #Utilities
     git
