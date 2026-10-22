@@ -1,10 +1,14 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+  ];
 
   #Boot
   boot.loader.systemd-boot.enable = true;
@@ -118,14 +122,14 @@
     enable32Bit = true;
   };
 
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware.nvidia = {
 
     modesetting.enable = true;
     powerManagement.enable = false;
     powerManagement.finegrained = false;
-  
+
     open = true;
     nvidiaSettings = true;
 
@@ -143,7 +147,12 @@
     extraConfig.pipewire."99-low-latency" = {
       "context.properties" = {
         "default.clock.rate" = 48000;
-        "default.clock.allowed-rates" = [ 44100 48000 96000 192000 ];
+        "default.clock.allowed-rates" = [
+          44100
+          48000
+          96000
+          192000
+        ];
 
         "default.clock.quantum" = 64;
         "default.clock.min-quantum" = 32;
@@ -177,11 +186,15 @@
     daemon.settings.features.cdi = true;
   };
   hardware.nvidia-container-toolkit.enable = true;
-  
+
   #Users
   users.users.username = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" "input" ];
+    extraGroups = [
+      "wheel"
+      "docker"
+      "input"
+    ];
     shell = pkgs.zsh;
     packages = with pkgs; [
       tree
@@ -194,14 +207,13 @@
     withUWSM = true;
     xwayland.enable = true;
   };
+  programs.bash.enable = true;
   programs.zsh.enable = true;
   programs.steam = {
     enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
     extraPackages = with pkgs; [
       gamemode
+      gamescope
     ];
   };
 
@@ -214,7 +226,9 @@
 
     #Terminal
     zsh
+    bash
     nitch
+    kitty
 
     #Utilities
     git
@@ -266,9 +280,11 @@
   ];
   fonts.fontDir.enable = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   system.stateVersion = "26.05";
 
 }
-

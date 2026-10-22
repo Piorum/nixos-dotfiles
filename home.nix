@@ -3,10 +3,6 @@
 	home.username = "username";
 	home.homeDirectory = "/home/username";
 	home.stateVersion = "26.05";
-	home.packages = with pkgs;[
-		kitty
-	];
-	programs.bash.enable = true;
 
 	home.file.".config/fastfetch".source = ./config/fastfetch;
 	home.file.".config/gtk-3.0".source = ./config/gtk-3.0;
